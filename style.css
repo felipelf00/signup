@@ -22,6 +22,10 @@ main {
 .form {
     height: 240px;
     padding-left: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0 5px 4px #c5c5c5;
+    z-index: 10;
+    position: relative;
 }
 
 input,
@@ -30,9 +34,12 @@ textarea {
   font-family: inherit;
   font-size: 100%;
   width: 240px;
-  padding: 0;
+  padding: 3px;
   margin: 0;
   box-sizing: border-box;
+  border-color: #d3d3d3;
+  border-radius: 5px;
+  border-style: solid;
 }
 
 .form-row {
@@ -67,4 +74,17 @@ a {
     text-decoration: none;
     color:rgb(36, 87, 72);
     font-weight: 800;
+}
+
+input:focus {
+    outline: none;
+    border-color: #707070;
+}
+
+input:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: #9c4747
+}
+
+input:valid {
+    border-color: #a6bda1;
 }
