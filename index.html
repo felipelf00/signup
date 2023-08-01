@@ -1,75 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sumo Clash</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="left">
-        <img src="background.jpg" alt="yokozuna terunofuji">
+      <img src="background.jpg" alt="yokozuna terunofuji" />
     </div>
     <main>
-        <div class="top">
-            <h1>This is Sumo Clash!</h1>
-            <p>Sign up now for an amazing fantasy sumo experience</p>
-        </div>
-        <div class="form">
-            <form action="#" method="post" id="signup">
-                <h2>Let's do this!</h2>
-                <div class="form-row">
-                    <div class="input">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required placeholder="e.g. Ricardo">
-                    </div>
-                    <div class="input">
-                        <label for="last-name">Last name</label>
-                        <input type="text" id="last-name" name="last-name" required placeholder="e.g. Sugano">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="input">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="e.g. kaisei@sumo.com">
-                    </div>
-                    <div class="input">
-                        <label for="phone">Phone number</label>
-                        <input type="tel" id="phone" name="phone" required placeholder=" ">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="input">
-                        <label for="pwd">Password</label>
-                        <input type="password" id="pwd" name="pwd" required placeholder=" ">
-                    </div>
-                    <div class="input">
-                        <label for="confirm-pwd">Confirm password</label>
-                        <input type="password" id="confirm-pwd" name="confirm-pwd" required placeholder=" ">
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="bottom">
-            <button form="signup" type="submit">Create Account</button>
-            <p>Already have an account? <a href="#">Log in</a></p>
-        </div>
+      <div class="top">
+        <h1>This is Sumo Clash!</h1>
+        <p>Sign up now for an amazing fantasy sumo experience</p>
+      </div>
+      <div class="form">
+        <form action="#" method="post" id="signup" novalidate>
+          <h2>Let's do this!</h2>
+          <div class="form-row">
+            <div class="input">
+              <label for="name">Name</label>
+
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="e.g. Ricardo"
+              />
+              <span class="error-msg hidden"></span>
+            </div>
+            <div class="input">
+              <label for="last-name">Last name</label>
+
+              <input
+                type="text"
+                id="last-name"
+                name="last-name"
+                required
+                placeholder="e.g. Sugano"
+              />
+              <span class="error-msg hidden"></span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="e.g. kaisei@sumo.com"
+              />
+              <span class="error-msg hidden"></span>
+            </div>
+            <div class="input">
+              <label for="phone">Phone number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                placeholder=" "
+              />
+              <span class="error-msg hidden"></span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label for="pwd">Password</label>
+              <input
+                type="password"
+                id="pwd"
+                name="pwd"
+                required
+                placeholder=" "
+              />
+              <span class="error-msg hidden"></span>
+            </div>
+            <div class="input">
+              <label for="confirm-pwd">Confirm password</label>
+              <input
+                type="password"
+                id="confirm-pwd"
+                name="confirm-pwd"
+                required
+                placeholder=" "
+              />
+              <span class="error-msg hidden"></span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="bottom">
+        <button form="signup" type="submit">Create Account</button>
+        <p>Already have an account? <a href="#">Log in</a></p>
+      </div>
     </main>
     <script>
-        const pwd = document.getElementById("pwd");
-        const confirm = document.getElementById("confirm-pwd");
-        console.log(pwd, confirm);
-        confirm.onkeyup = function() {
-            if (pwd.value !== confirm.value) {
-//            confirm.setAttribute("isvalid", "false");
-                confirm.setCustomValidity("Passwords don't match")
-            console.log("invalid");
+      const form = document.getElementById("signup");
+      const name = document.getElementById("name");
+      const lastName = document.getElementById("last-name");
+      const email = document.getElementById("email");
+      const phone = document.getElementById("phone");
+      const pwd = document.getElementById("pwd");
+      const confirm = document.getElementById("confirm-pwd");
+
+      const nameError = document.querySelector("#name + .error-msg");
+      const lastNameError = document.querySelector("#last-name + .error-msg");
+      const emailError = document.querySelector("#email + .error-msg");
+      const phoneError = document.querySelector("#phone + .error-msg");
+      const pwdError = document.querySelector("#pwd + .error-msg");
+      const confirmError = document.querySelector("#confirm-pwd + .error-msg");
+
+      //   name.addEventListener("input", (event) => {
+      //     if (name.validity.valid) {
+      //       nameError.textContent = "";
+      //       nameError.classList.add("hidden");
+      //     } else {
+      //       nameError.textContent = "Please enter your name";
+      //       nameError.classList.remove("hidden");
+      //     }
+      //   });
+
+      confirm.onkeyup = function () {
+        if (pwd.value !== confirm.value) {
+          confirm.setCustomValidity("Passwords don't match");
         } else confirm.setCustomValidity("");
+      };
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        let isFormValid = true;
+
+        if (name.validity.valid) {
+          nameError.textContent = "";
+          nameError.classList.add("hidden");
+        } else {
+          nameError.textContent = "Please enter your name";
+          nameError.classList.remove("hidden");
+          isFormValid = false;
         }
 
+        if (lastName.validity.valid) {
+          lastNameError.textContent = "";
+          lastNameError.classList.add("hidden");
+        } else {
+          lastNameError.textContent = "Please enter your last name";
+          lastNameError.classList.remove("hidden");
+          isFormValid = false;
+        }
+
+        if (email.validity.valid) {
+          emailError.textContent = "";
+          emailError.classList.add("hidden");
+        } else if (email.validity.valueMissing) {
+          emailError.textContent = "Please enter your email";
+          emailError.classList.remove("hidden");
+          isFormValid = false;
+        } else if (email.validity.typeMismatch) {
+          emailError.textContent = "Please enter a valid email address";
+          emailError.classList.remove("hidden");
+          isFormValid = false;
+        }
+
+        if (phone.validity.valid) {
+          phoneError.textContent = "";
+          phoneError.classList.add("hidden");
+        } else {
+          phoneError.textContent = "Please enter your phone number";
+          phoneError.classList.remove("hidden");
+          isFormValid = false;
+        }
+
+        if (pwd.validity.valid) {
+          pwdError.textContent = "";
+          pwdError.classList.add("hidden");
+        } else {
+          pwdError.textContent = "Please enter a password";
+          pwdError.classList.remove("hidden");
+          isFormValid = false;
+        }
+
+        if (confirm.value !== pwd.value) {
+          confirmError.textContent = "Passwords don't match";
+          confirmError.classList.remove("hidden");
+          isFormValid = false;
+        } else if (!confirm.validity.valid) {
+          confirmError.textContent = "Please confirm your password";
+          confirmError.classList.remove("hidden");
+          isFormValid = false;
+        } else {
+          confirmError.textContent = "";
+          confirmError.classList.add("hidden");
+        }
+
+        if (isFormValid) {
+          alert("Good job!");
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
